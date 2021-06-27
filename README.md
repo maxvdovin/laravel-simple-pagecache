@@ -11,8 +11,7 @@ Add ServiceProvider to the providers array in config/app.php:
 MXJ\PageCache\PageCacheServiceProvider::class,
 ```
 
-## Configuration
-Add in config/cache.php:
+Make sure that in config/cache.php contains:
 ```
     'database' => [
         'driver' => 'database',
@@ -21,8 +20,18 @@ Add in config/cache.php:
     ],
 ```
 
-To publish a configuration file use
+Make migration to add `cache` table:
+```
+php arthisan migrate
+```
 
+## Configuration
+Optionally in /HTTP/Kernel.php in `$routeMiddleware` array you can add
+```
+'pagecahe' => PageCache::class,
+```
+
+To publish a configuration file use
 ```
 php artisan vendor:publish
 ```
