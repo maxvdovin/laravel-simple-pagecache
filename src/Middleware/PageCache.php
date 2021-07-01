@@ -25,7 +25,7 @@ class PageCache
             return $next($request);
         }
         $key = $request->fullUrl();
-        if (strlen($key) >= 140) {
+        if (strlen($key) >= 240) {
             return $next($request);
         }
         $store = config('pagecache.store');
